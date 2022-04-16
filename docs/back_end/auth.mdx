@@ -1,0 +1,16 @@
+---
+title: "Authentication and Authorization"
+sidebar_position: 50
+---
+
+The backend provides an OIDC service for maintaining login/logout functionality and identity. It is implemented with [KeyCloak](https://www.keycloak.org/) service running in the cluster at https://auth.camping-training.com.
+
+## Current
+
+## Plan
+
+We will have a `users` service. The responsibility of this service will be to:
+
+1. Create new users as part of the onboarding feature.
+1. Be a facade over keycloak for purposes of verifying user identity.
+1. Keeping the data associated with a user.

@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: certificate
+metadata:
+  name: docs-camping
+  namespace: camping
+spec:
+  dnsNames:
+    - docs.camping-training.com
+  secretName: docs-camping-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer

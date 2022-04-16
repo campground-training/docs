@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: docs-ingress
+  namespace: camping
+  labels:
+    name: docs-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-camping-wcard"
+spec:
+  tls:
+    - hosts:
+        - docs.camping-training.com
+      secretName: docs-camping-tls
+  rules:
+    - host: docs.camping-training.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: docs-service
+                port:
+                  number: 80
