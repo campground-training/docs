@@ -42,7 +42,7 @@ jobs:
         with:
           images: campingtraining/camping-docs
           flavor: |
-            latest=auto
+            latest=true
           tags: |
             type=sha
           
