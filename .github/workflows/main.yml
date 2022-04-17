@@ -32,11 +32,24 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: Build Container Image
-        uses: docker/build-push-action@v2.10.0
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1.6.0
+      - name: Login to Github Packages
+        uses: docker/login-action@v1
         with:
-          image: camping-docs
           registry: ghcr.io
-          username: ${{ secrets.GHCR_USERNAME }}
-          password: ${{ secrets.GHCR_TOKEN }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_PAT }}
+      - name: Build image and push to Docker Hub and GitHub Container Registry
+        uses: docker/build-push-action@v2
+        with:
+          # relative path to the place where source code with Dockerfile is located
+          context: ./src/samples/simple
+          # Note: tags has to be all lower-case
+          tags: |
+            ghcr.io/jeffrygonzalez/camping-training/docs:latest
+          # build on feature branches, push only on main branch
+          push: ${{ github.ref == 'refs/heads/main' }}
+
           
