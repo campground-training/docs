@@ -51,7 +51,6 @@ jobs:
           context: .
           tags: ${{ steps.meta.outputs.tag }}
           labels: ${{ steps.meta.outputs.label }}
-          addLatest: true
           push: ${{ github.ref == 'refs/heads/main' }}
 
           
