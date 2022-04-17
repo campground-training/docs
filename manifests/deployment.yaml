@@ -12,11 +12,11 @@ spec:
         app: docs
     spec:
       containers:
-      - name: docs
-        image: jeffrygonzalez/camping-docs:latest
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 80
+        - name: docs
+          image: campingtraining/camping-docs:sha-0caab10
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
