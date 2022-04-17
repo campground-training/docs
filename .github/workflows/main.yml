@@ -35,9 +35,8 @@ jobs:
       - name: Build Container Image
         uses: docker/build-push-action@v2.10.0
         with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_PAT }}
+          image: camping-docs
           registry: ghcr.io
-          repository: camping-training/docs
-          tags: ${{ github.sha }}
-          dockerfile: Dockerfile
+          username: ${{ secrets.GHCR_USERNAME }}
+          password: ${{ secrets.GHCR_TOKEN }}
+          
