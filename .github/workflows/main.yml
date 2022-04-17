@@ -42,10 +42,13 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build image and Push
         uses: docker/build-push-action@v2
+        env:
+          IMAGE_TAG: ${{ githhub.sha }}
         with:
           context: .
           tags: |
             campingtraining/camping-docs:latest
+            campingtraining/camping-docs:$IMAGE_TAG
           push: ${{ github.ref == 'refs/heads/main' }}
 
           
