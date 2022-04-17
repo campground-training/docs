@@ -41,6 +41,10 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: campingtraining/camping-docs
+          flavor: |
+            latest=auto
+          tags: |
+            type=sha
           
       - name: Login to Dockerub
         uses: docker/login-action@v1.14.1
